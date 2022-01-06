@@ -20,4 +20,6 @@ public interface UserRepository extends JpaRepository<User,Long> {
 	public List<UserAddressAccount> fetchUserInnerJoin();
 	
 	public  Optional<User> findItByEmail(String email);
+	
+	
 }

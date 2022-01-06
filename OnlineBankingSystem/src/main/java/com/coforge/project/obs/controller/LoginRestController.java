@@ -3,9 +3,11 @@ package com.coforge.project.obs.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.coforge.project.obs.exception.ResourceNotFoundException;
 import com.coforge.project.obs.model.Account;
 import com.coforge.project.obs.model.Address;
+import com.coforge.project.obs.model.Transact;
 import com.coforge.project.obs.model.User;
 import com.coforge.project.obs.model.UserAddressAccount;
 import com.coforge.project.obs.repository.UserRepository;
@@ -87,6 +90,14 @@ public class LoginRestController {
 		return a;
 	}
 	
+	@GetMapping("/getId/{email}")
+    public String gettheId(@PathVariable String email) {
+		
+		User u=uRepo.findByEmail(email);
+		String mobilenumber=u.getMobilenumber();
+		String id=mobilenumber+"@falcon";
+		return id;
+	}
 	
 	
 }

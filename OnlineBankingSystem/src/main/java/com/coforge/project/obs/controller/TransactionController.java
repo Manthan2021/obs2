@@ -32,10 +32,10 @@ public class TransactionController {
 	
 	
 	
-	@GetMapping("/all/{id}")
-	public ResponseEntity<List<Transact>> getAllTxn(String id){
+	@GetMapping("/all/{uid}")
+	public ResponseEntity<List<Transact>> getAllTxn(@PathVariable String uid){
 		
-		return new ResponseEntity<>(tService.getalltxn(id),HttpStatus.OK);
+		return new ResponseEntity<>(tService.getalltxn(uid),HttpStatus.OK);
 	}
 	
 
