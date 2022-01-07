@@ -24,6 +24,19 @@ public class Account {
 	@OneToOne
 	@JoinColumn(name="userid")
 	private User user;
+	
+	public Account() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+	public Account(String uid, String mobilenumber) {
+		super();
+		this.uid = uid;
+		this.mobilenumber = mobilenumber;
+	
+	}
 
 	public Long getId() {
 		return id;

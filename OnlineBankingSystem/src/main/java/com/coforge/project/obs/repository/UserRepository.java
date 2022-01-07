@@ -5,7 +5,9 @@ import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
+import com.coforge.project.obs.model.Account;
 import com.coforge.project.obs.model.User;
 import com.coforge.project.obs.model.UserAddressAccount;
 
@@ -20,6 +22,9 @@ public interface UserRepository extends JpaRepository<User,Long> {
 	public List<UserAddressAccount> fetchUserInnerJoin();
 	
 	public  Optional<User> findItByEmail(String email);
+
+	@Query("SELECT new com.coforge.project.obs.model.Account(a.mobilenumber,a.uid) FROM Account a WHERE a.uid = :id")
+    public List<Account> checkAccount(@Param("id") String id);
 	
 	
 }

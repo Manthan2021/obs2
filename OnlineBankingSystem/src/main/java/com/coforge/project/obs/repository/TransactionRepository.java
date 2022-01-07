@@ -20,5 +20,4 @@ public interface TransactionRepository extends JpaRepository<Transact,Long>{
 	
 	
 	
-	
 }

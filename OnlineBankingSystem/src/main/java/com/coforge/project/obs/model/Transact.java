@@ -31,7 +31,6 @@ public class Transact {
 
 	
 	
-	
 	public Transact(String uid, Date date, String recieverid, Long sent, Long recieved, Long balance) {
 		super();
 		this.uid = uid;
@@ -100,7 +99,6 @@ public class Transact {
 	public void setBalance(Long balance) {
 		this.balance = balance;
 	}
-	
 	
 	
 	}

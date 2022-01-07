@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,6 +24,7 @@ import com.coforge.project.obs.repository.UserRepository;
 
 //http://localhost:9999/obs/data/users
 @RestController
+@CrossOrigin(origins="http://localhost:4200")
 @RequestMapping(value="/data")
 public class LoginRestController {
 	
@@ -98,6 +100,18 @@ public class LoginRestController {
 		String id=mobilenumber+"@falcon";
 		return id;
 	}
+	
+	@GetMapping("/checkAccount/{uid}")
+	public Boolean checkAccount(@PathVariable String uid){
+		
+		Boolean v=false;
+		List<Account> list=uRepo.checkAccount(uid);
+		if(list.size()!=0) {
+			v=true;
+		}
+		return v;
+	}
+	
 	
 	
 }
