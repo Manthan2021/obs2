@@ -19,9 +19,9 @@ public class Transact {
 	private Long tid;
 	private String uid;
 	private Date date;
-	private String recieverid;	
+	private String receiverid;	
 	private Long Sent;
-	private Long recieved;
+	private Long received;
 	private Long balance;
 	
 	public Transact() {
@@ -31,13 +31,13 @@ public class Transact {
 
 	
 	
-	public Transact(String uid, Date date, String recieverid, Long sent, Long recieved, Long balance) {
+	public Transact(String uid, Date date, String receiverid, Long sent, Long received, Long balance) {
 		super();
 		this.uid = uid;
 		this.date = date;
-		this.recieverid = recieverid;
+		this.receiverid = receiverid;
 		Sent = sent;
-		this.recieved = recieved;
+		this.received = received;
 		this.balance = balance;
 	}
 
@@ -68,12 +68,12 @@ public class Transact {
 		this.date = date;
 	}
 
-	public String getRecieverid() {
-		return recieverid;
+	public String getReceiverid() {
+		return receiverid;
 	}
 
 	public void setRecieverid(String recieverid) {
-		this.recieverid = recieverid;
+		this.receiverid = recieverid;
 	}
 
 	public Long getSent() {
@@ -84,12 +84,12 @@ public class Transact {
 		Sent = sent;
 	}
 
-	public Long getRecieved() {
-		return recieved;
+	public Long getReceived() {
+		return received;
 	}
 
-	public void setRecieved(Long recieved) {
-		this.recieved = recieved;
+	public void setReceived(Long received) {
+		this.received = received;
 	}
 
 	public Long getBalance() {

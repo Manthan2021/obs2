@@ -101,6 +101,19 @@ public class LoginRestController {
 		return id;
 	}
 	
+	
+	@GetMapping("/getName/{email}")
+    public String gettheName(@PathVariable String email) {
+		
+		User u=uRepo.findByEmail(email);
+		String First=u.getFirstname();
+		String Last=u.getLastname();
+		
+		return (First+" "+Last);
+	}
+	
+	
+	
 	@GetMapping("/checkAccount/{uid}")
 	public Boolean checkAccount(@PathVariable String uid){
 		

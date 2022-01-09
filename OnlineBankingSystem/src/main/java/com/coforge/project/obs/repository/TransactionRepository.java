@@ -15,7 +15,7 @@ import com.coforge.project.obs.model.Transact;
 public interface TransactionRepository extends JpaRepository<Transact,Long>{
 
 	
-	 @Query("SELECT new com.coforge.project.obs.model.Transact(t.uid,t.date,t.recieverid,t.Sent,t.recieved,t.balance) FROM Transact t WHERE t.uid = :id OR t.recieverid = :id")
+	 @Query("SELECT new com.coforge.project.obs.model.Transact(t.uid,t.date,t.receiverid,t.Sent,t.received,t.balance) FROM Transact t WHERE t.uid = :id")
 	    public List<Transact> getAllTxn(@Param("id") String id);
 	
 	
