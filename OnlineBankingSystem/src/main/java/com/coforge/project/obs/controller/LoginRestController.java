@@ -1,5 +1,7 @@
 package com.coforge.project.obs.controller;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,7 @@ import com.coforge.project.obs.model.Address;
 import com.coforge.project.obs.model.Transact;
 import com.coforge.project.obs.model.User;
 import com.coforge.project.obs.model.UserAddressAccount;
+import com.coforge.project.obs.repository.TransactionRepository;
 import com.coforge.project.obs.repository.UserRepository;
 
 //http://localhost:9999/obs/data/users
@@ -31,9 +34,16 @@ public class LoginRestController {
 	@Autowired
 	private UserRepository uRepo;
 	
+	@Autowired
+	private TransactionRepository tRepo;
+	
 	
 	@PostMapping("/users")
 	public UserAddressAccount createuser(@Validated @RequestBody UserAddressAccount user) {
+		
+	
+		Date date = new Date();	 
+		Calendar cal = Calendar.getInstance();
 		
 		User u=new User();
 		u.setEmail(user.getEmail());
@@ -57,6 +67,14 @@ public class LoginRestController {
 		acc.setUid(user.getMobilenumber()+"@falcon");
 		acc.setMobilenumber(user.getMobilenumber());
 		
+		Transact t=new Transact();
+		t.setUid(user.getMobilenumber()+"@falcon");
+		t.setRecieverid("ADMIN");
+		t.setSent(0L);
+		t.setReceived(0L);
+		t.setBalance(0L);
+		t.setDate(date);
+		
 		u.setAddress(a);
 		a.setUser(u);
 		
@@ -64,6 +82,7 @@ public class LoginRestController {
 		acc.setUser(u);
 		
 		uRepo.save(u);
+		tRepo.save(t);
 		return user;
 		
 	}
